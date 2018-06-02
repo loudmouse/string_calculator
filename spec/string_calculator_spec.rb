@@ -40,6 +40,11 @@ class StringCalculator
 
   def self.calculate(input)
     operator = input.split(/\,|\|/).shift
+
+    # There is a lot of repeated logic in this code
+    # Try to get the first character (input[0] could get it for you
+    # Call add, multiply, subtract, divide methods with the remaining args
+    #
     if operator == "+"
       input.split(/\,|\|/).map(&:to_i).inject(0,:+)
     elsif operator == "-"
