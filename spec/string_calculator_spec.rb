@@ -43,7 +43,7 @@ class StringCalculator
     if operator == "+"
       input.split(/\,|\|/).map(&:to_i).inject(0,:+)
     elsif operator == "-"
-      input.split(/\,|\|/).map(&:to_i).inject(0,:-)
+      input.split(/\,|\|/)[1..-1].map(&:to_i).inject(:-)
     else operator == "*"
       input.split(/\,|\|/)[1..-1].map(&:to_i).inject(:*)
     end
@@ -98,7 +98,7 @@ RSpec.describe StringCalculator do
   it 'returns the difference of numbers with operator' do
     result = StringCalculator.calculate('-,1,2,3')
 
-    expect(result).to eq(-1)
+    expect(result).to eq(-4)
   end
 
   it 'uses the provided separator' do
